@@ -28,6 +28,7 @@ namespace AddressBookSystem
                     addressBookMenu.EditContact("Ankush");
                     break;
                 case 3:
+                    addressBookMenu.DeleteContact("Ankush");
                     break;
                 default:
                     System.Console.WriteLine("invalid input");

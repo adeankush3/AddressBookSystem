@@ -38,13 +38,13 @@ namespace AddressBook
 
             addressBook.Add(contacts);
         }
-        public void EditContact(string FirstName)
+        public void EditContact(string firstName)
         {
             Contacts edit = new Contacts();
 
             foreach (var data in addressBook)
             {
-                if (data.FirstName == FirstName)
+                if (data.FirstName == firstName)
                 {
                     edit = data;
                     return;
@@ -97,6 +97,20 @@ namespace AddressBook
                 }
 
             }
+
+        }
+        public void DeleteContact(string firstName)
+        {
+            Contacts delete = new Contacts();
+
+            foreach (var data in addressBook)
+            {
+                if (data.FirstName == firstName)
+                {
+                    delete = data;
+                }
+            }
+            addressBook.Remove(delete);
 
         }
     }
