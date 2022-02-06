@@ -38,5 +38,66 @@ namespace AddressBook
 
             addressBook.Add(contacts);
         }
+        public void EditContact(string FirstName)
+        {
+            Contacts edit = new Contacts();
+
+            foreach (var data in addressBook)
+            {
+                if (data.FirstName == FirstName)
+                {
+                    edit = data;
+                    return;
+                }
+            }
+            System.Console.WriteLine("choose option:\n 1. Last Name\n 2. Address\n 3. City\n 4. State\n 5. Zip\n 6. Phone number\n 7. Email\n 8.Exit");
+            bool flag = true;
+
+            while (flag)
+            {
+                int num = int.Parse(Console.ReadLine());
+
+                switch (num)
+                {
+                    case 1:
+                        edit.LastName = Console.ReadLine();
+                        break;
+                    
+                    case 2:
+                        edit.Address = Console.ReadLine();
+                        break;
+                   
+                    case 3:
+                        edit.City = Console.ReadLine();
+                        break;
+                   
+                    case 4:
+                        edit.State = Console.ReadLine();
+                        break;
+                   
+                    case 5:
+                        edit.Zip = Convert.ToInt32(Console.ReadLine());
+                        break;
+                    
+                    case 6:
+                        edit.PhoneNumber = Console.ReadLine();
+                        break;
+                   
+                    case 7:
+                        edit.Email = Console.ReadLine();
+                        break;
+                    
+                    case 8:
+                        flag = false;
+                        break;
+                   
+                    default:
+                        System.Console.WriteLine("Choose Your Correct option..");
+                        break;
+                }
+
+            }
+
+        }
     }
 }

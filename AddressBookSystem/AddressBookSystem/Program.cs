@@ -12,8 +12,27 @@ namespace AddressBookSystem
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To Address Book Program");
+            
             AddressBookMenu addressBookMenu = new AddressBookMenu();
-            addressBookMenu.AddContact();
+            
+            System.Console.WriteLine("Select option: \n 1. Add Contact\n 2.Edit Contact\n 3.Exit");
+            
+            int num1 = int.Parse(Console.ReadLine());
+
+            switch (num1)
+            {
+                case 1:
+                    addressBookMenu.AddContact();
+                    break;
+                case 2:
+                    addressBookMenu.EditContact("Ankush");
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.Console.WriteLine("invalid input");
+                    break;
+            }
         }
     }
 }
