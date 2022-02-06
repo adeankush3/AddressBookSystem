@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AddressBook;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace AddressBookSystem
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To Address Book Program");
+            AddressBookMenu addressBookMenu = new AddressBookMenu();
+            addressBookMenu.AddContact();
         }
     }
 }
