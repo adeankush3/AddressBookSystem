@@ -9,34 +9,42 @@ namespace AddressBook
         List<Contacts> addressBook = new List<Contacts>();
         public void AddContact()
         {
-
             Contacts contacts = new Contacts();
+            Console.WriteLine("Add New Contact:");
+            int contactsCount = Convert.ToInt32(Console.ReadLine());
 
-            System.Console.WriteLine("Enter Your First Name: ");
-            contacts.FirstName = Console.ReadLine();
+            for (int i = 1; i <= contactsCount; i++)
+            {
+                Console.WriteLine("Enter details for " + i + " Contact");
+                
+                Console.WriteLine("Enter Your First Name: ");
+                contacts.FirstName = Console.ReadLine();
 
-            System.Console.WriteLine("Enter Your Last Name: ");
-            contacts.LastName = Console.ReadLine();
+                Console.WriteLine("Enter Your Last Name: ");
+                contacts.LastName = Console.ReadLine();
 
-            System.Console.WriteLine("Enter Your Address: ");
-            contacts.Address = Console.ReadLine();
+                Console.WriteLine("Enter Your Address: ");
+                contacts.Address = Console.ReadLine();
 
-            System.Console.WriteLine("Enter Your City: ");
-            contacts.City = Console.ReadLine();
+                Console.WriteLine("Enter Your City: ");
+                contacts.City = Console.ReadLine();
 
-            System.Console.WriteLine("Enter Your State: ");
-            contacts.State = Console.ReadLine();
+                Console.WriteLine("Enter Your State: ");
+                contacts.State = Console.ReadLine();
 
-            System.Console.WriteLine("Enter Your Zip Code: ");
-            contacts.Zip = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter Your Zip Code: ");
+                contacts.Zip = Convert.ToInt32(Console.ReadLine());
 
-            System.Console.WriteLine("Enter Your Phone Number: ");
-            contacts.PhoneNumber = Console.ReadLine();
+                Console.WriteLine("Enter Your Phone Number: ");
+                contacts.PhoneNumber = Console.ReadLine();
 
-            System.Console.WriteLine("Enter Your Email-Id: ");
-            contacts.Email = Console.ReadLine();
+                Console.WriteLine("Enter Your Email-Id: ");
+                contacts.Email = Console.ReadLine();
 
-            addressBook.Add(contacts);
+                addressBook.Add(contacts);
+
+                Console.WriteLine("Contact added Successfully....");
+            }
         }
         public void EditContact(string firstName)
         {
@@ -50,7 +58,7 @@ namespace AddressBook
                     return;
                 }
             }
-            System.Console.WriteLine("choose option:\n 1. Last Name\n 2. Address\n 3. City\n 4. State\n 5. Zip\n 6. Phone number\n 7. Email\n 8.Exit");
+            Console.WriteLine("choose option:\n 1. Last Name\n 2. Address\n 3. City\n 4. State\n 5. Zip\n 6. Phone number\n 7. Email\n 8.Exit");
             bool flag = true;
 
             while (flag)
@@ -112,6 +120,15 @@ namespace AddressBook
             }
             addressBook.Remove(delete);
 
+        }
+        public void Display()
+        {
+
+            foreach (var data in addressBook)
+            {
+                Console.WriteLine("Contact Data is: \n" + data.FirstName + "\n" + data.LastName + "\n" + data.Address + "\n" + data.City + "\n" + data.State + "\n" + data.Zip + "\n" + data.PhoneNumber + "\n" + data.Email);
+
+            }
         }
     }
 }

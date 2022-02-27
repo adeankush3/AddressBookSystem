@@ -15,25 +15,36 @@ namespace AddressBookSystem
             
             AddressBookMenu addressBookMenu = new AddressBookMenu();
             
-            System.Console.WriteLine("Select option: \n 1. Add Contact\n 2.Edit Contact\n 3.Exit");
+            Console.WriteLine("Select option: \n 1. Add Contact\n 2.Edit Contact\n 3.Delete Contact\n 4.Exit");
             
             int num1 = int.Parse(Console.ReadLine());
 
             switch (num1)
             {
+               
                 case 1:
                     addressBookMenu.AddContact();
                     break;
+
                 case 2:
-                    addressBookMenu.EditContact("Ankush");
+                    Console.WriteLine("Enter Name for perform Edit Operation:\n");
+                    string edit = Console.ReadLine();
+                    addressBookMenu.EditContact(edit);
+                    addressBookMenu.Display();
                     break;
+                
                 case 3:
-                    addressBookMenu.DeleteContact("Ankush");
+                    Console.WriteLine("Enter Name for perform Delete Operation:\n");
+                    string delete = Console.ReadLine();
+                    addressBookMenu.DeleteContact(delete);
+                    addressBookMenu.Display();
                     break;
+
                 default:
-                    System.Console.WriteLine("invalid input");
+                    Console.WriteLine("invalid input");
                     break;
             }
+            addressBookMenu.Display();
         }
     }
 }
