@@ -12,6 +12,24 @@ namespace AddressBook
             Contacts contacts = new Contacts();
             Console.WriteLine("Add New Contact:");
             int contactsCount = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                Contacts contact = new Contacts();
+                
+                bool present = Validate(contact.FirstName, contact.LastName);
+                if (present)
+                {
+                    Console.WriteLine("Already Present ");
+                    return;
+                }
+
+                contact.Add(contact);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+
+            }
 
             for (int i = 1; i <= contactsCount; i++)
             {
@@ -46,6 +64,12 @@ namespace AddressBook
                 Console.WriteLine("Contact added Successfully....");
             }
         }
+
+        private bool Validate(object firstName, object lastName)
+        {
+            throw new NotImplementedException();
+        }
+
         public void EditContact(string firstName)
         {
             Contacts edit = new Contacts();
@@ -130,5 +154,6 @@ namespace AddressBook
 
             }
         }
+        
     }
 }
