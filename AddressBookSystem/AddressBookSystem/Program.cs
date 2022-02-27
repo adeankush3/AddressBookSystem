@@ -9,6 +9,18 @@ namespace AddressBookSystem
 {
     public class Program
     {
+        static Dictionary<int, string> ContactsList = new Dictionary<int, string>();
+        public static void GetContactList() {
+            if (ContactsList.Count > 0)
+            {
+                foreach (var contact in ContactsList)
+                    Console.WriteLine("\n Name: " + contact.Value + " Number: " + contact.Key + " \n ");
+            }
+            else
+            {
+                Console.WriteLine("\n No contacts found in the ContactList. Add a new contact to proceed further: \n");
+            }
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To Address Book Program");
