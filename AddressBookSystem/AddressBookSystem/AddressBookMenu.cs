@@ -154,6 +154,26 @@ namespace AddressBook
 
             }
         }
+        public void SearchCityOrState()
+        {
+            List<Contacts> list = new List<Contacts>();
+            foreach (var contact in Contacts)
+            {
+
+                list = (contact.Value.contact.FindAll(e => e.State == name | e.City == name).ToList());
+                bool search = true;
+                foreach (Contacts contacts in list)
+                {
+                    if (search)
+                    {
+                        Console.WriteLine(contact.Key);
+                        search = false;
+                    }
+                    Console.WriteLine(contact.FirstName + " " + contact.LastName);
+
+                }
+            }
+        }
         
     }
 }

@@ -12,11 +12,12 @@ namespace AddressBookSystem
         
         static void Main(string[] args)
         {
+            Dictionary<string, Contacts> Adressbooks = new Dictionary<string, Contacts>();
             Console.WriteLine("Welcome To Address Book Program");
             
             AddressBookMenu addressBookMenu = new AddressBookMenu();
             
-            Console.WriteLine("Select option: \n 1. Add Contact\n 2.Edit Contact\n 3.Delete Contact\n 4.Exit");
+            Console.WriteLine("Select option: \n 1. Add Contact\n 2.Edit Contact\n 3.Delete Contact\n 4.Serch City Or State 5.Exit");
             
             int num1 = int.Parse(Console.ReadLine());
 
@@ -39,6 +40,11 @@ namespace AddressBookSystem
                     string delete = Console.ReadLine();
                     addressBookMenu.DeleteContact(delete);
                     addressBookMenu.Display();
+                    break;
+               
+                case 4:
+                    Console.WriteLine("Serch City or State\n");
+                    addressBookMenu.SearchCityOrState();
                     break;
 
                 default:
