@@ -1,37 +1,22 @@
 ﻿using AddressBookSystem;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AddressBook
 {
     public class AddressBookMenu
     {
-        List<Contacts> addressBook = new List<Contacts>();
+        public List<Contacts> contact = new List<Contacts>();
         public void AddContact()
         {
+
             Contacts contacts = new Contacts();
             Console.WriteLine("Add New Contact:");
-            int contactsCount = Convert.ToInt32(Console.ReadLine());
-            try
-            {
-                Contacts contact = new Contacts();
-                
-                bool present = Validate(contact.FirstName, contact.LastName);
-                if (present)
-                {
-                    Console.WriteLine("Already Present ");
-                    return;
-                }
+            
+            int Add = Convert.ToInt32(Console.ReadLine());
 
-                contact.Add(contact);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-
-            }
-
-            for (int i = 1; i <= contactsCount; i++)
+            for (int i = 1; i <= Add; i++)
             {
                 Console.WriteLine("Enter details for " + i + " Contact");
                 
@@ -59,22 +44,27 @@ namespace AddressBook
                 Console.WriteLine("Enter Your Email-Id: ");
                 contacts.Email = Console.ReadLine();
 
-                addressBook.Add(contacts);
+                contact.Add(contacts);
 
                 Console.WriteLine("Contact added Successfully....");
-            }
-        }
+                var checkDuplicate = contact.GroupBy(x => x.FirstName, StringComparer.OrdinalIgnoreCase).Where(y => y.Count() > 1).Select(z => z.Key).ToList();
+                if (checkDuplicate.Equals(contacts.FirstName))
+                {
+                    Console.WriteLine("Record is already present in the addrebook");
 
-        private bool Validate(object firstName, object lastName)
-        {
-            throw new NotImplementedException();
+                }
+                else
+                {
+                    contact.Add(contacts);
+                }
+            }
         }
 
         public void EditContact(string firstName)
         {
             Contacts edit = new Contacts();
 
-            foreach (var data in addressBook)
+            foreach (var data in contact)
             {
                 if (data.FirstName == firstName)
                 {
@@ -124,56 +114,65 @@ namespace AddressBook
                         break;
                    
                     default:
-                        System.Console.WriteLine("Choose Your Correct option..");
+                        Console.WriteLine("Choose Your Correct option..");
                         break;
                 }
 
             }
-
         }
         public void DeleteContact(string firstName)
         {
             Contacts delete = new Contacts();
 
-            foreach (var data in addressBook)
+            foreach (var data in contact)
             {
                 if (data.FirstName == firstName)
                 {
                     delete = data;
                 }
             }
-            addressBook.Remove(delete);
+            contact.Remove(delete);
 
         }
         public void Display()
         {
 
-            foreach (var data in addressBook)
+            foreach (var data in contact)
             {
                 Console.WriteLine("Contact Data is: \n" + data.FirstName + "\n" + data.LastName + "\n" + data.Address + "\n" + data.City + "\n" + data.State + "\n" + data.Zip + "\n" + data.PhoneNumber + "\n" + data.Email);
 
             }
         }
-        public void SearchCityOrState()
+        public void SearchCityOrState(string firstName)
         {
-            List<Contacts> list = new List<Contacts>();
-            foreach (var contact in Contacts)
+            foreach (Contacts item in contact)
             {
-
-                list = (contact.Value.contact.FindAll(e => e.State == name | e.City == name).ToList());
-                bool search = true;
-                foreach (Contacts contacts in list)
+                if (contact.Any(x => x.FirstName == firstName))
                 {
-                    if (search)
-                    {
-                        Console.WriteLine(contact.Key);
-                        search = false;
-                    }
-                    Console.WriteLine(contact.FirstName + " " + contact.LastName);
-
+                    Console.WriteLine("Person Present");
+                }
+                else
+                {
+                    Console.WriteLine("Person Not Found");
                 }
             }
         }
-        
+        public void ViewPersonInTheCityOrState(string firstName)
+        {
+            foreach (Contacts item in contact)
+            {
+                if (contact.Any(x => x.FirstName == firstName))
+                {
+                    Console.WriteLine("Person Present");
+                }
+                else
+                {
+                    Console.WriteLine("Person Not Found");
+                }
+            }
+        }
+
+
+
     }
 }

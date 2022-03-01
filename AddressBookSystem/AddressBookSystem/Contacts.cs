@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace AddressBookSystem
 {
@@ -13,9 +14,6 @@ namespace AddressBookSystem
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
 
-        internal void Add(Contacts contact)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
