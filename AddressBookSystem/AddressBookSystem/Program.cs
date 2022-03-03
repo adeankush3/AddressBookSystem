@@ -23,7 +23,8 @@ namespace AddressBookSystem
                 "\n 4.Serch City Or State " +
                 "\n 5.View Person In The City Or State" +
                 "\n 6.Count Of Contact Persons " +
-                "\n 7.Exit");
+                "\n 7.Sort Contact By Alphabetical"+
+                "\n 8.Exit");
             
             int count = 0;
             int num1 = Convert.ToInt32(Console.ReadLine());
@@ -78,6 +79,11 @@ namespace AddressBookSystem
                     Console.WriteLine("Count Of Contact Persons");
                     int total = Convert.ToInt32(Console.ReadLine());
                     addressBookMenu.CountOfContactPersons(total);
+                    break;
+                
+                case 7:
+                    Console.WriteLine("Sort Contact By Alphabetical");
+                    addressBookMenu.SortContactByAlphabetical();
                     break;
 
                 default:

@@ -8,11 +8,12 @@ namespace AddressBook
     public class AddressBookMenu
     {
         public List<Contacts> contact = new List<Contacts>();
+         Contacts contacts = new Contacts();
+            int TotalContact = 0;
         public void AddContact()
         {
 
-            Contacts contacts = new Contacts();
-            int TotalContact = 0;
+           
             Console.WriteLine("Add New Contact:");
             
             int Add = Convert.ToInt32(Console.ReadLine());
@@ -177,6 +178,17 @@ namespace AddressBook
         public void CountOfContactPersons(int TotalContact)
         {
             Console.WriteLine("Total Contact" + TotalContact);
+        }
+        public void SortContactByAlphabetical()
+        {
+            try
+            {
+                contact = contact.OrderBy(x => x.FirstName).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
