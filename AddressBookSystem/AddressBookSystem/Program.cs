@@ -24,6 +24,7 @@ namespace AddressBookSystem
                 "\n 5.View Person In The City Or State" +
                 "\n 6.Count Of Contact Persons " +
                 "\n 7.Sort Contact By Alphabetical"+
+                "\n 8.Sort Contact By City State Or Zip"+
                 "\n 8.Exit");
             
             int count = 0;
@@ -53,14 +54,14 @@ namespace AddressBookSystem
                     Console.WriteLine("Enter Name for perform Edit Operation:\n");
                     string edit = Console.ReadLine();
                     addressBookMenu.EditContact(edit);
-                    addressBookMenu.Display();
+                   // addressBookMenu.Display();
                     break;
                 
                 case 3:
                     Console.WriteLine("Enter Name for perform Delete Operation:\n");
                     string delete = Console.ReadLine();
                     addressBookMenu.DeleteContact(delete);
-                    addressBookMenu.Display();
+                    //addressBookMenu.Display();
                     break;
 
                 case 4:
@@ -85,12 +86,16 @@ namespace AddressBookSystem
                     Console.WriteLine("Sort Contact By Alphabetical");
                     addressBookMenu.SortContactByAlphabetical();
                     break;
+                case 8:
+                    Console.WriteLine("Enter City Or State Or zip to sort the contacts");
+                    string getstring = Console.ReadLine();
+                    addressBookMenu.SortContactByCityStateOrZip(getstring);
+                    break;
 
                 default:
                     Console.WriteLine("invalid input");
                     break;
             }
-            addressBookMenu.Display();
         }
     }
 }

@@ -137,7 +137,7 @@ namespace AddressBook
             contact.Remove(delete);
 
         }
-        public void Display()
+        public void Display(Contacts contacts)
         {
 
             foreach (var data in contact)
@@ -190,5 +190,34 @@ namespace AddressBook
                 Console.WriteLine(ex.Message);
             }
         }
+        public void SortContactByCityStateOrZip(string input)
+        {
+            try
+            {
+                if (input != null)
+                {
+                    contact = contact.OrderBy(x => x.City).ToList();
+                    Display(contacts);
+                }
+                if (input != null)
+                {
+                    contact = contact.OrderBy(x => x.State).ToList();
+                    Display(contacts);
+                }
+                if (input != null)
+                {
+                    contact = contact.OrderBy(x => x.Zip).ToList();
+                    Display(contacts);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
     }
 }
