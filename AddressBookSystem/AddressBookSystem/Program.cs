@@ -25,7 +25,7 @@ namespace AddressBookSystem
                 "\n 6.Count Of Contact Persons " +
                 "\n 7.Sort Contact By Alphabetical"+
                 "\n 8.Sort Contact By City State Or Zip"+
-                "\n 8.Exit");
+                "\n 9.Exit");
             
             int count = 0;
             int num1 = Convert.ToInt32(Console.ReadLine());
