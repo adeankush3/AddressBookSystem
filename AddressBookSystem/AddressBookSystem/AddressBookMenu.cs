@@ -243,10 +243,54 @@ namespace AddressBook
 
                 using (StreamReader sr = File.OpenText(filePath))
                 {
-                    string s = "";
-                    while ((s = sr.ReadLine()) != null)
+                    string str = "";
+                    while ((str = sr.ReadLine()) != null)
                     {
-                        Console.WriteLine(s);
+                        Console.WriteLine(str);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public void ReadWriteContactIntoCSVFile()
+        {
+            try
+            {
+                string filePath = @"F:\Bridgelabz\AddressBookSystem\AddressBookSystem\AddressBookSystem\ContactFile.csv";
+                using (StreamWriter sw = File.AppendText(filePath))
+                {
+                    sw.WriteLine("FirstName,\t" +
+                        "Last Name,\t" +
+                        "Address,\t" +
+                        "City,\t" +
+                        "State,\t" +
+                        "Zip,\t" +
+                        "Phone Number,\t" +
+                        "Email");
+                    foreach (Contacts item in contact)
+                    {
+                        sw.WriteLine(item.FirstName +
+                            ",\t" + item.LastName +
+                            ",\t" + item.Address +
+                            ",\t" + item.City +
+                            ",\t" + item.State +
+                            ",\t" + item.Zip +
+                            ",\t" + item.PhoneNumber +
+                            ",\t" + item.Email);
+                        sw.Close();
+                    }
+                }
+
+                using (StreamReader sr = File.OpenText(filePath))
+                {
+                    string str = "";
+                    while ((str = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(str);
                     }
                 }
 

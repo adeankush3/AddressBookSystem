@@ -26,7 +26,8 @@ namespace AddressBookSystem
                 "\n 7.Sort Contact By Alphabetical"+
                 "\n 8.Sort Contact By City State Or Zip"+
                 "\n 9.Read Write Contact Into Text File"+
-                "\n Invalid Input");
+                "\n 10.Read write Contact Into CSV File"+
+                "\n 11.Invalid Input");
             
             int count = 0;
             int num1 = Convert.ToInt32(Console.ReadLine());
@@ -95,7 +96,14 @@ namespace AddressBookSystem
                     break;
                 
                 case 9:
+                    Console.WriteLine("Read write Contact Into Text File");
                     addressBookMenu.ReadWriteContactIntoTextFile();
+                    Console.ReadLine();
+                    break;
+
+                case 10:
+                    Console.WriteLine("Read write Contact Into CSV File");
+                    addressBookMenu.ReadWriteContactIntoCSVFile();
                     Console.ReadLine();
                     break;
 
