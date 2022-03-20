@@ -25,7 +25,8 @@ namespace AddressBookSystem
                 "\n 6.Count Of Contact Persons " +
                 "\n 7.Sort Contact By Alphabetical"+
                 "\n 8.Sort Contact By City State Or Zip"+
-                "\n 9.Exit");
+                "\n 9.Read Write Contact Into Text File"+
+                "\n Invalid Input");
             
             int count = 0;
             int num1 = Convert.ToInt32(Console.ReadLine());
@@ -86,11 +87,18 @@ namespace AddressBookSystem
                     Console.WriteLine("Sort Contact By Alphabetical");
                     addressBookMenu.SortContactByAlphabetical();
                     break;
+               
                 case 8:
                     Console.WriteLine("Enter City Or State Or zip to sort the contacts");
                     string getstring = Console.ReadLine();
                     addressBookMenu.SortContactByCityStateOrZip(getstring);
                     break;
+                
+                case 9:
+                    addressBookMenu.ReadWriteContactIntoTextFile();
+                    Console.ReadLine();
+                    break;
+
 
                 default:
                     Console.WriteLine("invalid input");

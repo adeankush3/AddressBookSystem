@@ -1,6 +1,7 @@
 ﻿using AddressBookSystem;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace AddressBook
@@ -217,6 +218,43 @@ namespace AddressBook
                 Console.WriteLine(ex.Message);
             }
 
+        }
+        public void ReadWriteContactIntoTextFile()
+        {
+            try
+            {
+                string filePath = @"F:\Bridgelabz\AddressBookSystem\AddressBookSystem\AddressBookSystem\ContactFile.txt";
+                using (StreamWriter sw = File.AppendText(filePath))
+                {
+                    foreach (Contacts item in contact)
+                    {
+                        sw.WriteLine("Address Book Details Added For " + item.FirstName + " Contact");
+                        sw.WriteLine(item.FirstName +
+                            "\t" + item.LastName +
+                            "\t" + item.Address +
+                            "\t" + item.City +
+                            "\t" + item.State +
+                            "\t" + item.Zip +
+                            "\t" + item.PhoneNumber +
+                            "\t" + item.Email);
+                        sw.Close();
+                    }
+                }
+
+                using (StreamReader sr = File.OpenText(filePath))
+                {
+                    string s = "";
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
     }
